@@ -16,7 +16,7 @@ control.all_algorithms={
     'target-D plan'
     };
 
-control.algorithm_case = 1;
+control.algorithm_case = 4;
 control.algorithm_used = control.all_algorithms{control.algorithm_case};
 
 %% Generate target.xyz/psi_in_MOVING based on a given reasonable target.xyz/psi
@@ -32,19 +32,6 @@ target.xyz = t1/1000; target.psi =  t2/180*pi;
 NNN = length(control.T);
 target.xyz_in_MOVING_all = repmat(xyz_in_MOVING,1,NNN);
 target.psi_in_MOVING_all = repmat(psi_in_MOVING,1,NNN);
-
-% Ts = 5;
-% t1 = rand(3,1)*5; t2 = rand(3,1)*2; t3 = rand(6,1)*2*pi;
-% save xyz_psi t1 t2 t3
-% load xyz_psi 
-% for i=1:NNN
-%     target.xyz=t1.*sin(i*2*pi/Ts/hexapod.fps+t3(1:3))/1000;
-%     target.psi=t2.*sin(i*2*pi/Ts/hexapod.fps+t3(4:6))/180*pi;
-%     [xyz_in_MOVING,psi_in_MOVING] = generate_target_in_MOVING(target, hexapod, couch);
-%     target.xyz_in_MOVING_all(:,i) = xyz_in_MOVING;
-%     target.psi_in_MOVING_all(:,i) = psi_in_MOVING;
-% end
-
 
 %% compute initial hexapod.moving.xyz/psi
 Q.couch = ZZ_Euler_2_DCM_P123(couch.psi);
